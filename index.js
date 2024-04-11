@@ -7,15 +7,6 @@ const mysql2 = require("mysql2")
 const app = express()
 ////////////////////////////////////
 
-//CONNEXION A LA BASE DE DONNEE MYSQL
-// const db_connexion = mysql2.createConnection({
-//     host: "localhost",
-//     user: "root",
-//     password: "",
-//     database: "gestion"
-// })
-/////////////////////////////////////
-
 //CONFIGURATION APPLICATION EXPRESS
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
