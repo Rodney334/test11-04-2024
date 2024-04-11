@@ -56,3 +56,14 @@ exports.update = async (req, res) => {
       res.status(500).json({ message: error.message });
     }
 };
+
+exports.delete = async (req, res) => {
+    const productId = req.params.id;
+  
+    try {
+        await Product.deleteById(productId);
+        res.redirect('/product');
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};

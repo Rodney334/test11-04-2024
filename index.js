@@ -30,6 +30,7 @@ app.get('/product/new', productController.new);
 app.post('/product', productController.create);
 app.get('/product/edit/:id', productController.edit);
 app.post('/product/edit/:id', productController.update);
+app.get('/product/delete/:id', productController.delete); 
 
 //ECOUTER L'APPLICATION
 const port = 8080
