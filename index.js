@@ -28,6 +28,8 @@ app.get("/", (req, res, next) => {
 app.get('/product', productController.index);
 app.get('/product/new', productController.new);
 app.post('/product', productController.create);
+app.get('/product/edit/:id', productController.edit);
+app.post('/product/edit/:id', productController.update);
 
 //ECOUTER L'APPLICATION
 const port = 8080

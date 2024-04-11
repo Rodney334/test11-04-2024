@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modifier Produit</title>
+</head>
+<body>
+    <div style="display: flex; flex-direction: column; justify-content: center;">
+        <div style="display: flex; justify-content: center;">
+            <h2>Formulaire modification d'un produit</h2>
+        </div>
+        <div style="display: flex; justify-content: center;">
+            <form action="/product/edit/<%= product.id %>" method="post">
+                <div style="margin: 5px; display: flex; justify-content: space-between;">
+                    <label for="name" style="margin: 3px;">Nom du produit</label>
+                    <input type="text" name="name" id="name" placeholder="Nom" value="<%= product.name %>" required>
+                </div>
+                <div style="margin: 5px; display: flex; justify-content: space-between;">
+                    <label for="priceHt" style="margin: 3px;">Prix du produit</label>
+                    <input type="number" name="priceHt" id="priceHt" placeholder="Prix" value="<%= product.priceHt %>" required>
+                </div>
+                <div style="display: flex; justify-content: center;">
+                    <button type="submit" style="margin: 5px; padding: 5px; border: none; border-radius: 3px; background-color: blue; color: snow; font-weight: bolder; width: 100px; height: 25px;">Modifier</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

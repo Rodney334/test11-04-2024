@@ -7,7 +7,7 @@ exports.index = async (req, res) => {
     } catch (error) {
       res.status(500).json({ message: error.message });
     }
-}
+};
 
 exports.new = (req, res) => {
     res.render('product/new.html');
@@ -19,6 +19,38 @@ exports.create = async (req, res) => {
   
     try {
       await product.save();
+      res.redirect('/product');
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+};
+
+exports.edit = async (req, res) => {
+    const productId = req.params.id;
+
+    try {
+        const [productData] = await Product.fetchById(productId);
+        
+        if (!productData) {
+            return res.status(404).json({ message: 'Product not found' });
+        }
+
+        res.render('product/edit.html', {
+            product: productData,
+        });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+}
+
+exports.update = async (req, res) => {
+    const productId = req.params.id;
+    const { name, priceHt } = req.body;
+    const dateUpdate = new Date();
+  
+    try {
+      const product = new Product(name, priceHt, null, dateUpdate);
+      await product.update(productId);
       res.redirect('/product');
     } catch (error) {
       res.status(500).json({ message: error.message });
