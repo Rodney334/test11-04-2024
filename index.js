@@ -1,6 +1,7 @@
 //IMPORTATION DES MODULES 
-const express = require("express")
-const mysql2 = require("mysql2")
+const express = require("express");
+const bodyParser = require('body-parser');
+const ejs = require('ejs');
 ///////////////////////////////////
 
 const productController = require('./controllers/productController');
@@ -10,6 +11,10 @@ const app = express()
 ////////////////////////////////////
 
 //CONFIGURATION APPLICATION EXPRESS
+app.set('view engine', 'ejs');
+app.engine('html', require('ejs').renderFile);
+app.set('views', './templates');
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 ////////////////////////////////////////////////////////
@@ -21,6 +26,8 @@ app.get("/", (req, res, next) => {
 })
 
 app.get('/product', productController.index);
+app.get('/product/new', productController.new);
+app.post('/product', productController.create);
 
 //ECOUTER L'APPLICATION
 const port = 8080
